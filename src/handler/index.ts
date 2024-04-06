@@ -23,8 +23,10 @@ const app: ServerType = new Server(manifest);
 await app.init({ env: process.env as Record<string, string> });
 
 export async function handler(
-  event: APIGatewayProxyEventV2 | CloudFrontRequestEvent | APIGatewayProxyEvent
+  event: APIGatewayProxyEventV2 | CloudFrontRequestEvent | APIGatewayProxyEvent,
+  context: any // TODO: get the correct type for this
 ) {
+  context.callbackWaitsForEmptyEventLoop = false;
   debug("event", event);
 
   // Parse Lambda event
