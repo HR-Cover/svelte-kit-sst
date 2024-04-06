@@ -16,6 +16,7 @@ await app.init({ env: process.env });
 export async function handler(event, context) {
     context.callbackWaitsForEmptyEventLoop = false;
     debug("event", event);
+    debug("context.callbackWaitsForEmptyEventLoop", context.callbackWaitsForEmptyEventLoop);
     // Parse Lambda event
     const internalEvent = convertFrom(event);
     // Set correct host header
